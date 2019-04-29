@@ -94,3 +94,23 @@ root@test:/var/www/html/apw_web# chmod -c 777 ./templates_c
 #修改檔案:/var/www/html/apw_web/assets/ajax.js //修改裡面的IP和PORT
 
 #http://IP_Address/apw_web
+
+請注意!!!!!
+
+GCP的防火牆要打開，打開步驟:
+
+請參考網址:https://www.kilait.com/2017/09/28/gcp-%E9%98%B2%E7%81%AB%E7%89%86%E8%A6%8F%E5%89%87%E8%A8%AD%E5%AE%9A/
+
+然後請記得:在"目標"那邊記得選"網路中的所有執行個體"，這樣才能套用到全部的虛擬機
+
+再來是GO語言的部分，GO要打開並且LISTEN PORT1025
+
+而GO會有問題的部分是在go get -v golang.org/x/net/websocket這行指令。
+
+而原因在於只要把環境變數加入即可，環境變數指令:export GOPATH=$HOME/golang，然後記得在home目錄下創建一個golang資料夾
+
+完成後就可以go run main.go(記得找到main.go存在的目錄執行)。
+
+然後Arduino的連線方式是1025，後面記得加"/ws"
+
+
